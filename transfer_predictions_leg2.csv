@@ -1,0 +1,13 @@
+﻿Deputat,Partid,In_Graf,Degree_Centrality,Power_Bonacich,Betweenness,Stress,Prestige_PageRank,Eccentricity,Clustering,Weighted_Degree,Omophily_Party,Clique_Count,Clique_Max_Size,Is_Isolated,Exclus,P_Excludere_Ensemble,Risc
+Ana Moldovan,PAS,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,1,0.5,🟡 Moderat
+Petru Galbur,PSRM,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,1,0.5,🟡 Moderat
+Elena Vrabie,PAS,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,1,0.5,🟡 Moderat
+Sergiu Litvinenco,PAS,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat
+Veronica Roșca,PAS,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat
+Tudor Ulianovschi,PN,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat
+Alexandr Coroli,PSRM,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat
+Natalia Gavrilița,PAS,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat
+Radu Burduja,PAS,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat
+Cristina Gherasim,PAS,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat
+Mihai Moldovan,PSRM,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat
+Victor Parlicov,PAS,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,1,0,0.5,🟡 Moderat

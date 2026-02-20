@@ -1,0 +1,181 @@
+{
+  "total_cliques": 82,
+  "max_clique_size": 4,
+  "max_cliques": [
+    [
+      "Artemie CĂTĂNOI",
+      "Igor CHIRIAC",
+      "Lilian CARP",
+      "Veronica ROȘCA"
+    ],
+    [
+      "Igor CHIRIAC",
+      "Andrian CHEPTONAR",
+      "Veronica ROȘCA",
+      "Lilian CARP"
+    ]
+  ],
+  "cliques_by_size": {
+    "4": [
+      [
+        "Artemie CĂTĂNOI",
+        "Igor CHIRIAC",
+        "Lilian CARP",
+        "Veronica ROȘCA"
+      ],
+      [
+        "Igor CHIRIAC",
+        "Andrian CHEPTONAR",
+        "Veronica ROȘCA",
+        "Lilian CARP"
+      ]
+    ],
+    "3": [
+      [
+        "Radu MUDREAC",
+        "Corneliu FURCULIȚĂ",
+        "Petru BURDUJA"
+      ],
+      [
+        "Radu MARIAN",
+        "Ion POIA",
+        "Andrian CHEPTONAR"
+      ],
+      [
+        "Radu MARIAN",
+        "Alexandr TRUBCA",
+        "Dorian ISTRATII"
+      ],
+      [
+        "Radu MARIAN",
+        "Alexandr TRUBCA",
+        "Sergiu LAZARENCU"
+      ],
+      [
+        "Radu MARIAN",
+        "Alexandr TRUBCA",
+        "Marina MOROZOVA"
+      ],
+      [
+        "Radu MARIAN",
+        "Alexandr TRUBCA",
+        "Boris MARCOCI"
+      ],
+      [
+        "Radu MARIAN",
+        "Ana SPEIANU",
+        "Andrian CHEPTONAR"
+      ],
+      [
+        "Radu MARIAN",
+        "Adrian BELÎI",
+        "Marina MOROZOVA"
+      ],
+      [
+        "Radu MARIAN",
+        "Andrian CHEPTONAR",
+        "Marina MOROZOVA"
+      ],
+      [
+        "Doina GHERMAN",
+        "Marina MOROZOVA",
+        "Adrian BELÎI"
+      ],
+      [
+        "Doina GHERMAN",
+        "Marina MOROZOVA",
+        "Alexandr TRUBCA"
+      ],
+      [
+        "Doina GHERMAN",
+        "Ana OGLINDA",
+        "Adrian BELÎI"
+      ],
+      [
+        "Doina GHERMAN",
+        "Ana OGLINDA",
+        "Alexandr TRUBCA"
+      ],
+      [
+        "Doina GHERMAN",
+        "Ana OGLINDA",
+        "Ion GROZA"
+      ],
+      [
+        "Liliana NICOLAESCU-ONOFREI",
+        "Ana SPEIANU",
+        "Ana OGLINDA"
+      ],
+      [
+        "Ana CALINICI",
+        "Igor GROSU",
+        "Veronica ROȘCA"
+      ],
+      [
+        "Igor GROSU",
+        "Adrian BELÎI",
+        "Veronica ROȘCA"
+      ],
+      [
+        "Igor GROSU",
+        "Alexandr TRUBCA",
+        "Boris MARCOCI"
+      ],
+      [
+        "Vasile GRĂDINARU",
+        "Boris MARCOCI",
+        "Alexandr TRUBCA"
+      ],
+      [
+        "Vasile GRĂDINARU",
+        "Boris MARCOCI",
+        "Lilian CARP"
+      ],
+      [
+        "Vasile GRĂDINARU",
+        "Ana OGLINDA",
+        "Artemie CĂTĂNOI"
+      ],
+      [
+        "Vasile GRĂDINARU",
+        "Ana OGLINDA",
+        "Adrian BELÎI"
+      ],
+      [
+        "Vasile GRĂDINARU",
+        "Ana OGLINDA",
+        "Alexandr TRUBCA"
+      ],
+      [
+        "Vasile GRĂDINARU",
+        "Lilian CARP",
+        "Artemie CĂTĂNOI"
+      ],
+      [
+        "Ana OGLINDA",
+        "Larisa VOLOH",
+        "Artemie CĂTĂNOI"
+      ],
+      [
+        "Ana OGLINDA",
+        "Larisa VOLOH",
+        "Alexandr TRUBCA"
+      ],
+      [
+        "Artemie CĂTĂNOI",
+        "Boris POPA",
+        "Veronica ROȘCA"
+      ],
+      [
+        "Artemie CĂTĂNOI",
+        "Igor CHIRIAC",
+        "Angela MUNTEANU-POJOGA"
+      ],
+      [
+        "Mariana CUȘNIR",
+        "Alexandr TRUBCA",
+        "Boris MARCOCI"
+      ]
+    ]
+  }
+}

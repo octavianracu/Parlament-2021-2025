@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d0" for="edge" attr.name="weight" attr.type="long"/>
+<graph edgedefault="undirected"><node id="Grigore NOVAC"/>
+<node id="Igor DODON"/>
+<node id="Marcel CENUȘA"/>
+<node id="Pavel VOICU"/>
+<node id="Vlad BATRÎNCEA"/>
+<node id="Vladimir ODNOSTALCO"/>
+<node id="Zinaida GRECEANÎI"/>
+<edge source="Grigore NOVAC" target="Igor DODON">
+  <data key="d0">1</data>
+</edge>
+<edge source="Grigore NOVAC" target="Marcel CENUȘA">
+  <data key="d0">1</data>
+</edge>
+<edge source="Grigore NOVAC" target="Pavel VOICU">
+  <data key="d0">1</data>
+</edge>
+<edge source="Grigore NOVAC" target="Vlad BATRÎNCEA">
+  <data key="d0">1</data>
+</edge>
+<edge source="Grigore NOVAC" target="Vladimir ODNOSTALCO">
+  <data key="d0">1</data>
+</edge>
+<edge source="Grigore NOVAC" target="Zinaida GRECEANÎI">
+  <data key="d0">1</data>
+</edge>
+<edge source="Igor DODON" target="Marcel CENUȘA">
+  <data key="d0">1</data>
+</edge>
+<edge source="Igor DODON" target="Pavel VOICU">
+  <data key="d0">1</data>
+</edge>
+<edge source="Igor DODON" target="Vlad BATRÎNCEA">
+  <data key="d0">1</data>
+</edge>
+<edge source="Igor DODON" target="Vladimir ODNOSTALCO">
+  <data key="d0">1</data>
+</edge>
+<edge source="Igor DODON" target="Zinaida GRECEANÎI">
+  <data key="d0">1</data>
+</edge>
+<edge source="Marcel CENUȘA" target="Pavel VOICU">
+  <data key="d0">1</data>
+</edge>
+<edge source="Marcel CENUȘA" target="Vlad BATRÎNCEA">
+  <data key="d0">1</data>
+</edge>
+<edge source="Marcel CENUȘA" target="Vladimir ODNOSTALCO">
+  <data key="d0">1</data>
+</edge>
+<edge source="Marcel CENUȘA" target="Zinaida GRECEANÎI">
+  <data key="d0">1</data>
+</edge>
+<edge source="Pavel VOICU" target="Vlad BATRÎNCEA">
+  <data key="d0">1</data>
+</edge>
+<edge source="Pavel VOICU" target="Vladimir ODNOSTALCO">
+  <data key="d0">1</data>
+</edge>
+<edge source="Pavel VOICU" target="Zinaida GRECEANÎI">
+  <data key="d0">1</data>
+</edge>
+<edge source="Vlad BATRÎNCEA" target="Vladimir ODNOSTALCO">
+  <data key="d0">1</data>
+</edge>
+<edge source="Vlad BATRÎNCEA" target="Zinaida GRECEANÎI">
+  <data key="d0">1</data>
+</edge>
+<edge source="Vladimir ODNOSTALCO" target="Zinaida GRECEANÎI">
+  <data key="d0">1</data>
+</edge>
+</graph></graphml>

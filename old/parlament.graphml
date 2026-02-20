@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <!-- Created by SocNetV 3.2 -->
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance "       xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns       http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.name="label" attr.type="string"> 
+    <default></default> 
+  </key> 
+  <key id="d1" for="node" attr.name="x_coordinate" attr.type="double"> 
+    <default>0.0</default> 
+  </key> 
+  <key id="d2" for="node" attr.name="y_coordinate" attr.type="double"> 
+    <default>0.0</default> 
+  </key> 
+  <key id="d3" for="node" attr.name="size" attr.type="double"> 
+    <default>10</default> 
+  </key> 
+  <key id="d4" for="node" attr.name="color" attr.type="string"> 
+    <default>red</default> 
+  </key> 
+  <key id="d5" for="node" attr.name="shape" attr.type="string"> 
+    <default>circle</default> 
+  </key> 
+  <key id="d6" for="node" attr.name="label.color" attr.type="string"> 
+    <default>#8d8d8d</default> 
+  </key> 
+  <key id="d7" for="node" attr.name="label.size" attr.type="string"> 
+    <default>8</default> 
+  </key> 
+  <key id="d8" for="edge" attr.name="weight" attr.type="double"> 
+    <default>1.0</default> 
+  </key> 
+  <key id="d9" for="edge" attr.name="color" attr.type="string"> 
+    <default>#666666</default> 
+  </key> 
+  <key id="d10" for="edge" attr.name="label" attr.type="string"> 
+    <default></default> 
+  </key> 
+  <graph id="parlament.txt" edgedefault="directed"> 
+    <node id="1"> 
+      <data key="d0">Artemie CĂTĂNOI</data>
+      <data key="d1">0.75238</data>
+      <data key="d2">0.897689</data>
+      <data key="d3">15</data>
+      <data key="d4">#ff5e00</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="2"> 
+      <data key="d0">Veronica ROȘCA</data>
+      <data key="d1">0.66697</data>
+      <data key="d2">0.800468</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="3"> 
+      <data key="d0">Dorian ISTRATII</data>
+      <data key="d1">0.801901</data>
+      <data key="d2">0.900149</data>
+      <data key="d3">6</data>
+      <data key="d4">#002bff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="4"> 
+      <data key="d0">Radu MARIAN</data>
+      <data key="d1">0.727455</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">15</data>
+      <data key="d4">#ff0000</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="5"> 
+      <data key="d0">Boris MARCOCI</data>
+      <data key="d1">0.785305</data>
+      <data key="d2">0.872227</data>
+      <data key="d3">6</data>
+      <data key="d4">#0055ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="6"> 
+      <data key="d0">Lilian CARP</data>
+      <data key="d1">0.866943</data>
+      <data key="d2">0.821461</data>
+      <data key="d3">9</data>
+      <data key="d4">#00ffaa</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="7"> 
+      <data key="d0">Eugeniu SINCHEVICI</data>
+      <data key="d1">0.656144</data>
+      <data key="d2">0.900385</data>
+      <data key="d3">7</data>
+      <data key="d4">#006aff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="8"> 
+      <data key="d0">Liliana NICOLAESCU-ONOFREI</data>
+      <data key="d1">0.742743</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">11</data>
+      <data key="d4">#2aff00</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="9"> 
+      <data key="d0">Andrian CHEPTONAR</data>
+      <data key="d1">0.782425</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">9</data>
+      <data key="d4">#00ff80</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="10"> 
+      <data key="d0">Adrian BELÎI</data>
+      <data key="d1">0.809693</data>
+      <data key="d2">0.89108</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="11"> 
+      <data key="d0">Alina DANDARA</data>
+      <data key="d1">0.786897</data>
+      <data key="d2">0.840741</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="12"> 
+      <data key="d0">Doina GHERMAN</data>
+      <data key="d1">0.700682</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">8</data>
+      <data key="d4">#00e1ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="13"> 
+      <data key="d0">Angela MUNTEANU-POJOGA</data>
+      <data key="d1">0.855502</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="14"> 
+      <data key="d0">Grigore NOVAC</data>
+      <data key="d1">0.94233</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="15"> 
+      <data key="d0">Larisa NOVAC</data>
+      <data key="d1">0.704336</data>
+      <data key="d2">0.716549</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="16"> 
+      <data key="d0">Igor CHIRIAC</data>
+      <data key="d1">0.787438</data>
+      <data key="d2">0.762411</data>
+      <data key="d3">9</data>
+      <data key="d4">#00ff9d</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="17"> 
+      <data key="d0">Alexandr TRUBCA</data>
+      <data key="d1">0.685906</data>
+      <data key="d2">0.740724</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="18"> 
+      <data key="d0">Viorel BARDA</data>
+      <data key="d1">0.808438</data>
+      <data key="d2">0.699848</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="19"> 
+      <data key="d0">Boris POPA</data>
+      <data key="d1">0.680824</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="20"> 
+      <data key="d0">Ina COȘERU</data>
+      <data key="d1">0.667789</data>
+      <data key="d2">0.744337</data>
+      <data key="d3">6</data>
+      <data key="d4">#0040ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="21"> 
+      <data key="d0">Mariana CUȘNIR</data>
+      <data key="d1">0.825808</data>
+      <data key="d2">0.742237</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="22"> 
+      <data key="d0">Sergiu LAZARENCU</data>
+      <data key="d1">0.63658</data>
+      <data key="d2">0.885876</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="23"> 
+      <data key="d0">Marina MOROZOVA</data>
+      <data key="d1">0.627188</data>
+      <data key="d2">0.89119</data>
+      <data key="d3">12</data>
+      <data key="d4">#95ff00</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="24"> 
+      <data key="d0">Ana OGLINDA</data>
+      <data key="d1">0.792718</data>
+      <data key="d2">0.775937</data>
+      <data key="d3">11</data>
+      <data key="d4">#62ff00</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="25"> 
+      <data key="d0">Vasile GRĂDINARU</data>
+      <data key="d1">0.809174</data>
+      <data key="d2">0.657117</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="26"> 
+      <data key="d0">Victor SPÎNU</data>
+      <data key="d1">0.629616</data>
+      <data key="d2">0.86848</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="27"> 
+      <data key="d0">Igor GROSU</data>
+      <data key="d1">0.850965</data>
+      <data key="d2">0.742338</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="28"> 
+      <data key="d0">Marcela ADAM</data>
+      <data key="d1">0.77617</data>
+      <data key="d2">0.770118</data>
+      <data key="d4">#00ff55</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="29"> 
+      <data key="d0">Larisa VOLOH</data>
+      <data key="d1">0.75307</data>
+      <data key="d2">0.658223</data>
+      <data key="d3">8</data>
+      <data key="d4">#00ffff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="30"> 
+      <data key="d0">Ana CALINICI</data>
+      <data key="d1">0.756367</data>
+      <data key="d2">0.753326</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="31"> 
+      <data key="d0">Gheorghe ICHIM</data>
+      <data key="d1">0.675917</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="32"> 
+      <data key="d0">Oleg CANAȚUI</data>
+      <data key="d1">0.554091</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="33"> 
+      <data key="d0">Ion GROZA</data>
+      <data key="d1">0.647054</data>
+      <data key="d2">0.774999</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="34"> 
+      <data key="d0">Oazu NANTOI</data>
+      <data key="d1">0.70358</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="35"> 
+      <data key="d0">Ana SPEIANU</data>
+      <data key="d1">0.658347</data>
+      <data key="d2">0.777245</data>
+      <data key="d3">8</data>
+      <data key="d4">#00d4ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="36"> 
+      <data key="d0">Efimia BANDALAC</data>
+      <data key="d1">0.651671</data>
+      <data key="d2">0.899396</data>
+      <data key="d3">6</data>
+      <data key="d4">#002bff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="37"> 
+      <data key="d0">Ion POIA</data>
+      <data key="d1">0.884188</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="38"> 
+      <data key="d0">Liliana GROSU</data>
+      <data key="d1">0.602452</data>
+      <data key="d2">0.695742</data>
+      <data key="d3">6</data>
+      <data key="d4">#0055ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="39"> 
+      <data key="d0">Adela RĂILEANU</data>
+      <data key="d1">0.463607</data>
+      <data key="d2">0.907406</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="40"> 
+      <data key="d0">Vlad BATRÎNCEA</data>
+      <data key="d1">0.565154</data>
+      <data key="d2">0.788672</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="41"> 
+      <data key="d0">Maria PANCU</data>
+      <data key="d1">0.910802</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="42"> 
+      <data key="d0">Ion BABICI</data>
+      <data key="d1">0.91332</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="43"> 
+      <data key="d0">Ersilia QATRAWI</data>
+      <data key="d1">0.847382</data>
+      <data key="d2">0.885872</data>
+      <data key="d3">7</data>
+      <data key="d4">#00aaff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="44"> 
+      <data key="d0">Virgiliu PÂSLARIUC</data>
+      <data key="d1">0.94233</data>
+      <data key="d2">0.751788</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="45"> 
+      <data key="d0">Corneliu FURCULIȚĂ</data>
+      <data key="d1">0.735198</data>
+      <data key="d2">0.897127</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="46"> 
+      <data key="d0">Radu MUDREAC</data>
+      <data key="d1">0.857498</data>
+      <data key="d2">0.849512</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="47"> 
+      <data key="d0">Marcela NISTOR</data>
+      <data key="d1">0.858348</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="48"> 
+      <data key="d0">Vitali GAVROUC</data>
+      <data key="d1">0.746082</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="49"> 
+      <data key="d0">Olesea STAMATE</data>
+      <data key="d1">0.673571</data>
+      <data key="d2">0.881283</data>
+      <data key="d3">8</data>
+      <data key="d4">#00eaff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="50"> 
+      <data key="d0">Diana CARAMAN</data>
+      <data key="d1">0.656242</data>
+      <data key="d2">0.61913</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="51"> 
+      <data key="d0">Inga SIBOVA</data>
+      <data key="d1">0.782366</data>
+      <data key="d2">0.605207</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="52"> 
+      <data key="d0">Mariana LUCREȚEANU</data>
+      <data key="d1">0.855803</data>
+      <data key="d2">0.703469</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="53"> 
+      <data key="d0">Petru BURDUJA</data>
+      <data key="d1">0.770418</data>
+      <data key="d2">0.705157</data>
+      <data key="d3">6</data>
+      <data key="d4">#0015ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="54"> 
+      <data key="d0">Alla DAROVANNAIA</data>
+      <data key="d1">0.66658</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="55"> 
+      <data key="d0">Natalia DAVIDOVICI</data>
+      <data key="d1">0.633218</data>
+      <data key="d2">0.823355</data>
+      <data key="d3">7</data>
+      <data key="d4">#0080ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="56"> 
+      <data key="d0">Maria GONȚA</data>
+      <data key="d1">0.912702</data>
+      <data key="d2">0.659962</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="57"> 
+      <data key="d0">Ion ȘPAC</data>
+      <data key="d1">0.653947</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="58"> 
+      <data key="d0">Evghenia COJOCARI</data>
+      <data key="d1">0.731168</data>
+      <data key="d2">0.907407</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="59"> 
+      <data key="d0">Alla PILIPEȚCAIA</data>
+      <data key="d1">0.895403</data>
+      <data key="d2">0.723754</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <node id="60"> 
+      <data key="d0">Ana RACU</data>
+      <data key="d1">0.729796</data>
+      <data key="d2">0.697144</data>
+      <data key="d3">5</data>
+      <data key="d4">#0000ff</data>
+      <data key="d5">circle</data>
+    </node>
+    <edge id="e1" directed="true" source="1" target="2"> 
+      <data key="d8">11</data> 
+    </edge>
+    <edge id="e2" directed="true" source="1" target="6"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e3" directed="true" source="1" target="16"> 
+      <data key="d8">3</data> 
+    </edge>
+    <edge id="e4" directed="true" source="1" target="19"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e5" directed="true" source="1" target="25"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e6" directed="true" source="1" target="29"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e7" directed="true" source="1" target="43"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e8" directed="true" source="3" target="4"> 
+      <data key="d8">6</data> 
+    </edge>
+    <edge id="e9" directed="true" source="3" target="7"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e10" directed="true" source="3" target="36"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e11" directed="true" source="4" target="22"> 
+      <data key="d8">3</data> 
+    </edge>
+    <edge id="e12" directed="true" source="4" target="26"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e13" directed="true" source="5" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e14" directed="true" source="5" target="6"> 
+      <data key="d8">5</data> 
+    </edge>
+    <edge id="e15" directed="true" source="5" target="19"> 
+      <data key="d8">3</data> 
+    </edge>
+    <edge id="e16" directed="true" source="5" target="21"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e17" directed="true" source="5" target="25"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e18" directed="true" source="5" target="27"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e19" directed="true" source="6" target="2"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e20" directed="true" source="6" target="25"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e21" directed="true" source="6" target="55"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e22" directed="true" source="7" target="8"> 
+      <data key="d8">5</data> 
+    </edge>
+    <edge id="e23" directed="true" source="8" target="28"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e24" directed="true" source="9" target="2"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e25" directed="true" source="9" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e26" directed="true" source="9" target="6"> 
+      <data key="d8">5</data> 
+    </edge>
+    <edge id="e27" directed="true" source="9" target="16"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e28" directed="true" source="9" target="23"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e29" directed="true" source="9" target="34"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e30" directed="true" source="9" target="37"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e31" directed="true" source="9" target="57"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e32" directed="true" source="10" target="2"> 
+      <data key="d8">5</data> 
+    </edge>
+    <edge id="e33" directed="true" source="10" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e34" directed="true" source="10" target="12"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e35" directed="true" source="10" target="23"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e36" directed="true" source="10" target="24"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e37" directed="true" source="10" target="25"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e38" directed="true" source="10" target="27"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e39" directed="true" source="10" target="34"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e40" directed="true" source="10" target="41"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e41" directed="true" source="10" target="52"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e42" directed="true" source="10" target="55"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e43" directed="true" source="11" target="2"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e44" directed="true" source="11" target="7"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e45" directed="true" source="11" target="12"> 
+      <data key="d8">4</data> 
+    </edge>
+    <edge id="e46" directed="true" source="11" target="20"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e47" directed="true" source="11" target="26"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e48" directed="true" source="11" target="49"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e49" directed="true" source="12" target="23"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e50" directed="true" source="12" target="33"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e51" directed="true" source="13" target="1"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e52" directed="true" source="13" target="8"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e53" directed="true" source="13" target="14"> 
+      <data key="d8">4</data> 
+    </edge>
+    <edge id="e54" directed="true" source="13" target="16"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e55" directed="true" source="13" target="58"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e56" directed="true" source="15" target="8"> 
+      <data key="d8">3</data> 
+    </edge>
+    <edge id="e57" directed="true" source="15" target="22"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e58" directed="true" source="16" target="2"> 
+      <data key="d8">3</data> 
+    </edge>
+    <edge id="e59" directed="true" source="16" target="6"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e60" directed="true" source="16" target="33"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e61" directed="true" source="16" target="49"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e62" directed="true" source="17" target="3"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e63" directed="true" source="17" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e64" directed="true" source="17" target="5"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e65" directed="true" source="17" target="12"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e66" directed="true" source="17" target="18"> 
+      <data key="d8">3</data> 
+    </edge>
+    <edge id="e67" directed="true" source="17" target="21"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e68" directed="true" source="17" target="22"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e69" directed="true" source="17" target="23"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e70" directed="true" source="17" target="24"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e71" directed="true" source="17" target="25"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e72" directed="true" source="17" target="27"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e73" directed="true" source="17" target="29"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e74" directed="true" source="17" target="34"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e75" directed="true" source="19" target="2"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e76" directed="true" source="20" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e77" directed="true" source="20" target="21"> 
+      <data key="d8">3</data> 
+    </edge>
+    <edge id="e78" directed="true" source="20" target="29"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e79" directed="true" source="23" target="4"> 
+      <data key="d8">3</data> 
+    </edge>
+    <edge id="e80" directed="true" source="24" target="1"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e81" directed="true" source="24" target="8"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e82" directed="true" source="24" target="12"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e83" directed="true" source="24" target="25"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e84" directed="true" source="24" target="29"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e85" directed="true" source="24" target="33"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e86" directed="true" source="24" target="35"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e87" directed="true" source="27" target="2"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e88" directed="true" source="28" target="23"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e89" directed="true" source="29" target="56"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e90" directed="true" source="30" target="2"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e91" directed="true" source="30" target="27"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e92" directed="true" source="31" target="32"> 
+      <data key="d8">2</data> 
+    </edge>
+    <edge id="e93" directed="true" source="35" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e94" directed="true" source="35" target="8"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e95" directed="true" source="35" target="9"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e96" directed="true" source="36" target="8"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e97" directed="true" source="36" target="29"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e98" directed="true" source="37" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e99" directed="true" source="38" target="23"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e100" directed="true" source="39" target="40"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e101" directed="true" source="42" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e102" directed="true" source="43" target="22"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e103" directed="true" source="43" target="44"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e104" directed="true" source="45" target="46"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e105" directed="true" source="45" target="53"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e106" directed="true" source="47" target="34"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e107" directed="true" source="47" target="48"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e108" directed="true" source="49" target="4"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e109" directed="true" source="50" target="51"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e110" directed="true" source="53" target="46"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e111" directed="true" source="54" target="40"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e112" directed="true" source="55" target="49"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e113" directed="true" source="59" target="53"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e114" directed="true" source="60" target="1"> 
+      <data key="d8">1</data> 
+    </edge>
+    <edge id="e115" directed="true" source="60" target="38"> 
+      <data key="d8">1</data> 
+    </edge>
+  </graph>
+</graphml>

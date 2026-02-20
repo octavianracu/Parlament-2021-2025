@@ -1,0 +1,20 @@
+{
+  "total_cliques": 38,
+  "max_clique_size": 3,
+  "max_cliques": [
+    [
+      "Vasile COSTIUC",
+      "Alexandru CHIȚU",
+      "Ana ȚURCAN-OBOROC"
+    ]
+  ],
+  "cliques_by_size": {
+    "3": [
+      [
+        "Vasile COSTIUC",
+        "Alexandru CHIȚU",
+        "Ana ȚURCAN-OBOROC"
+      ]
+    ]
+  }
+}

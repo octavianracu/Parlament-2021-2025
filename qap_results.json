@@ -1,0 +1,9 @@
+{
+  "obs_corr": NaN,
+  "qap_pval": 0.0,
+  "n_permutations": 2000,
+  "null_mean": NaN,
+  "null_std": NaN,
+  "significant": true,
+  "interpretation": "Nu exist\u0103 o asociere semnificativ\u0103 \u00eentre intensitatea colabor\u0103rii \u0219i soarta comun\u0103 pe lista de candida\u021bi."
+}

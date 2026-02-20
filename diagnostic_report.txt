@@ -1,0 +1,69 @@
+RAPORT DIAGNOSTIC DATE
+=================================================================
+
+Proiecte în leg1_raw.json: 186
+Deputați unici în graf:    60
+
+TOȚI DEPUTAȚII DIN GRAF:
+Nume                                Proiecte Co-autori
+───────────────────────────────────────────────────────
+Adela RĂILEANU                             1         1
+Adrian BELÎI                              18        11
+Alexandr TRUBCA                           16        13
+Alina DANDARA                             11         6
+Alla DAROVANNAIA                           1         1
+Alla PILIPEȚCAIA                           1         1
+Ana CALINICI                               3         2
+Ana OGLINDA                               12         9
+Ana RACU                                   2         2
+Ana SPEIANU                                4         4
+Andrian CHEPTONAR                         14         9
+Angela MUNTEANU-POJOGA                     8         5
+Artemie CĂTĂNOI                           25        10
+Boris MARCOCI                             14         7
+Boris POPA                                 6         3
+Corneliu FURCULIȚĂ                         2         2
+Diana CARAMAN                              1         1
+Doina GHERMAN                             12         6
+Dorian ISTRATII                            9         4
+Efimia BANDALAC                            3         3
+Ersilia QATRAWI                            3         3
+Eugeniu SINCHEVICI                         8         3
+Evghenia COJOCARI                          1         1
+Gheorghe ICHIM                             2         1
+Grigore NOVAC                              4         1
+Igor CHIRIAC                              11         7
+Igor GROSU                                 6         5
+Ina COȘERU                                 6         4
+Inga SIBOVA                                1         1
+Ion BABICI                                 1         1
+Ion GROZA                                  4         3
+Ion POIA                                   2         2
+Ion ȘPAC                                   1         1
+Larisa NOVAC                               4         2
+Larisa VOLOH                               7         6
+Lilian CARP                               15         7
+Liliana GROSU                              2         2
+Liliana NICOLAESCU-ONOFREI                14         7
+Marcela ADAM                               3         2
+Marcela NISTOR                             2         2
+Maria GONȚA                                1         1
+Maria PANCU                                1         1
+Mariana CUȘNIR                             5         3
+Mariana LUCREȚEANU                         1         1
+Marina MOROZOVA                           10         7
+Natalia DAVIDOVICI                         3         3
+Oazu NANTOI                                4         4
+Oleg CANAȚUI                               2         1
+Olesea STAMATE                             4         4
+Petru BURDUJA                              3         3
+Radu MARIAN                               23        13
+Radu MUDREAC                               2         2
+Sergiu LAZARENCU                           6         4
+Vasile GRĂDINARU                           9         6
+Veronica ROȘCA                            28         9
+Victor SPÎNU                               3         2
+Viorel BARDA                               3         1
+Virgiliu PÂSLARIUC                         1         1
+Vitali GAVROUC                             1         1
+Vlad BATRÎNCEA                             2         2

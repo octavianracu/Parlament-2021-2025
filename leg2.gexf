@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://gexf.net/1.3" xmlns:viz="http://gexf.net/1.3/viz" version="1.3">
+  <meta>
+    <description>Rețea cooperare deputați — leg2</description>
+  </meta>
+  <graph defaultedgetype="undirected">
+    <attributes class="edge">
+      <attribute id="0" title="weight" type="integer"/>
+    </attributes>
+    <nodes>
+      <node id="Adela RĂILEANU" label="Adela RĂILEANU"/>
+      <node id="Adrian DOMENTIUC" label="Adrian DOMENTIUC"/>
+      <node id="Adrian LEBEDINSKII" label="Adrian LEBEDINSKII"/>
+      <node id="Ala URSU-ANTOCI" label="Ala URSU-ANTOCI"/>
+      <node id="Alexandr BERLINSCHII" label="Alexandr BERLINSCHII"/>
+      <node id="Alexandr STOIANOGLO" label="Alexandr STOIANOGLO"/>
+      <node id="Alexandr TRUBCA" label="Alexandr TRUBCA"/>
+      <node id="Alexandru CHIȚU" label="Alexandru CHIȚU"/>
+      <node id="Alic BARABOI" label="Alic BARABOI"/>
+      <node id="Ana CALINICI" label="Ana CALINICI"/>
+      <node id="Ana ȚURCAN-OBOROC" label="Ana ȚURCAN-OBOROC"/>
+      <node id="Andrian CHEPTONAR" label="Andrian CHEPTONAR"/>
+      <node id="Angela CUTASEVICI" label="Angela CUTASEVICI"/>
+      <node id="Artemie CĂTĂNOI" label="Artemie CĂTĂNOI"/>
+      <node id="Bogdat ȚÎRDEA" label="Bogdat ȚÎRDEA"/>
+      <node id="Constantin CUIUMJU" label="Constantin CUIUMJU"/>
+      <node id="Constantin STARÎȘ" label="Constantin STARÎȘ"/>
+      <node id="Diana CARAMAN" label="Diana CARAMAN"/>
+      <node id="Dinu PLÎNGĂU" label="Dinu PLÎNGĂU"/>
+      <node id="Doina GHERMAN" label="Doina GHERMAN"/>
+      <node id="Dorian ISTRATII" label="Dorian ISTRATII"/>
+      <node id="Elena GRIȚCO" label="Elena GRIȚCO"/>
+      <node id="Gabriela CUNEVA" label="Gabriela CUNEVA"/>
+      <node id="Gaik VARTANEAN" label="Gaik VARTANEAN"/>
+      <node id="Grigore NOVAC" label="Grigore NOVAC"/>
+      <node id="Igor CHIRIAC" label="Igor CHIRIAC"/>
+      <node id="Igor DODON" label="Igor DODON"/>
+      <node id="Igor TALMAZAN" label="Igor TALMAZAN"/>
+      <node id="Ilie IONAȘ" label="Ilie IONAȘ"/>
+      <node id="Inga SIBOVA" label="Inga SIBOVA"/>
+      <node id="Ion CHICU" label="Ion CHICU"/>
+      <node id="Iurie LEVINSCHI" label="Iurie LEVINSCHI"/>
+      <node id="Larisa NOVAC" label="Larisa NOVAC"/>
+      <node id="Lilian CARP" label="Lilian CARP"/>
+      <node id="Liliana IACONI" label="Liliana IACONI"/>
+      <node id="Nicolae MARGARINT" label="Nicolae MARGARINT"/>
+      <node id="Olga CEBOTARI" label="Olga CEBOTARI"/>
+      <node id="Pavel VOICU" label="Pavel VOICU"/>
+      <node id="Petru BURDUJA" label="Petru BURDUJA"/>
+      <node id="Radu MARIAN" label="Radu MARIAN"/>
+      <node id="Renato USATÎI" label="Renato USATÎI"/>
+      <node id="Sergiu LAZARENCU" label="Sergiu LAZARENCU"/>
+      <node id="Sergiu STEFANCO" label="Sergiu STEFANCO"/>
+      <node id="Valeriu MUDUC" label="Valeriu MUDUC"/>
+      <node id="Valeriu ROBU" label="Valeriu ROBU"/>
+      <node id="Vasile COSTIUC" label="Vasile COSTIUC"/>
+      <node id="Vasile GRĂDINARU" label="Vasile GRĂDINARU"/>
+      <node id="Victoria BELOUS" label="Victoria BELOUS"/>
+      <node id="Vladimir ODNOSTALCO" label="Vladimir ODNOSTALCO"/>
+    </nodes>
+    <edges>
+      <edge id="0" source="Bogdat ȚÎRDEA" target="Petru BURDUJA"><attvalues><attvalue for="0" value="5"/></attvalues></edge>
+      <edge id="1" source="Alexandr BERLINSCHII" target="Constantin CUIUMJU"><attvalues><attvalue for="0" value="4"/></attvalues></edge>
+      <edge id="2" source="Ala URSU-ANTOCI" target="Vladimir ODNOSTALCO"><attvalues><attvalue for="0" value="3"/></attvalues></edge>
+      <edge id="3" source="Alexandru CHIȚU" target="Vasile COSTIUC"><attvalues><attvalue for="0" value="2"/></attvalues></edge>
+      <edge id="4" source="Ion CHICU" target="Liliana IACONI"><attvalues><attvalue for="0" value="2"/></attvalues></edge>
+      <edge id="5" source="Alexandr BERLINSCHII" target="Renato USATÎI"><attvalues><attvalue for="0" value="2"/></attvalues></edge>
+      <edge id="6" source="Alexandr BERLINSCHII" target="Elena GRIȚCO"><attvalues><attvalue for="0" value="2"/></attvalues></edge>
+      <edge id="7" source="Adela RĂILEANU" target="Pavel VOICU"><attvalues><attvalue for="0" value="2"/></attvalues></edge>
+      <edge id="8" source="Alexandru CHIȚU" target="Ana ȚURCAN-OBOROC"><attvalues><attvalue for="0" value="2"/></attvalues></edge>
+      <edge id="9" source="Adrian DOMENTIUC" target="Diana CARAMAN"><attvalues><attvalue for="0" value="2"/></attvalues></edge>
+      <edge id="10" source="Adela RĂILEANU" target="Igor DODON"><attvalues><attvalue for="0" value="2"/></attvalues></edge>
+      <edge id="11" source="Adela RĂILEANU" target="Adrian LEBEDINSKII"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="12" source="Andrian CHEPTONAR" target="Lilian CARP"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="13" source="Artemie CĂTĂNOI" target="Igor TALMAZAN"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="14" source="Alexandr TRUBCA" target="Radu MARIAN"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="15" source="Alexandr TRUBCA" target="Igor CHIRIAC"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="16" source="Dinu PLÎNGĂU" target="Doina GHERMAN"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="17" source="Adrian DOMENTIUC" target="Inga SIBOVA"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="18" source="Adrian DOMENTIUC" target="Valeriu MUDUC"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="19" source="Ana ȚURCAN-OBOROC" target="Vasile COSTIUC"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="20" source="Adrian DOMENTIUC" target="Constantin STARÎȘ"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="21" source="Ana ȚURCAN-OBOROC" target="Sergiu STEFANCO"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="22" source="Angela CUTASEVICI" target="Gaik VARTANEAN"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="23" source="Larisa NOVAC" target="Sergiu LAZARENCU"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="24" source="Diana CARAMAN" target="Igor DODON"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="25" source="Alexandr TRUBCA" target="Iurie LEVINSCHI"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="26" source="Ana CALINICI" target="Doina GHERMAN"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="27" source="Alic BARABOI" target="Larisa NOVAC"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="28" source="Alexandr TRUBCA" target="Igor TALMAZAN"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="29" source="Alexandr BERLINSCHII" target="Nicolae MARGARINT"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="30" source="Adrian LEBEDINSKII" target="Bogdat ȚÎRDEA"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="31" source="Alic BARABOI" target="Valeriu ROBU"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="32" source="Alic BARABOI" target="Radu MARIAN"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="33" source="Dorian ISTRATII" target="Ilie IONAȘ"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="34" source="Grigore NOVAC" target="Olga CEBOTARI"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="35" source="Alexandr STOIANOGLO" target="Ion CHICU"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="36" source="Alexandr STOIANOGLO" target="Gabriela CUNEVA"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="37" source="Alic BARABOI" target="Vasile GRĂDINARU"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="38" source="Alic BARABOI" target="Victoria BELOUS"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+      <edge id="39" source="Alexandr STOIANOGLO" target="Gaik VARTANEAN"><attvalues><attvalue for="0" value="1"/></attvalues></edge>
+    </edges>
+  </graph>
+</gexf>

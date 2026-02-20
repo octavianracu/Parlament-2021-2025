@@ -1,0 +1,2294 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <title>Rețeaua de Colaborare a Deputaților (Vizualizare Interactivă)</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style type="text/css">
+        body { 
+            font: 12pt 'Arial', sans-serif; 
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f4f7f6;
+        }
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        #mynetwork {
+            width: 100%;
+            height: 100%; 
+            background-color: #333;
+        }
+        .header { 
+            position: absolute; 
+            top: 0;
+            left: 0;
+            right: 0;
+            text-align: center; 
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        .controls { 
+            position: absolute; 
+            top: 70px;
+            left: 20px; 
+            padding: 10px; 
+            border-radius: 8px; 
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        .legend { 
+            position: absolute; 
+            bottom: 20px; 
+            right: 20px; 
+            padding: 15px; 
+            border-radius: 8px; 
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        .color-box {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            margin-right: 5px;
+            border: 1px solid #333;
+            border-radius: 3px;
+        }
+        .community-legend-item { { display: flex; align-items: center; margin-bottom: 5px; } }
+        select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
+        strong { color: #2c3e50; }
+        
+        .vis-tooltip {
+            padding: 10px !important;
+            border-radius: 6px !important;
+            border: 1px solid #777 !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+            white-space: normal !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <div class="header">
+        <h1>Rețeaua de Co-autoriat a Deputaților</h1>
+    </div>
+
+    <div class="controls">
+        <label for="centralitySelect">Alegeți metrica pentru vizualizare:</label>
+        <select id="centralitySelect" onchange="updateNetwork()">
+            <option value="degree" selected>Centralitate Grad (Dimensiune/Culoare)</option>
+            <option value="betweenness">Centralitate Betweenness (Dimensiune/Culoare)</option>
+            <option value="community">Comunități (Culoare)</option>
+        </select>
+    </div>
+
+    <div id="mynetwork"></div>
+
+    <div class="legend">
+        <div id="centrality-legend">
+            <strong>Evidențiere Centralitate (Culoare / Dimensiune):</strong>
+            <p><span class="color-box" style="background-color: #e74c3c;"></span> Înaltă (Top 33%)</p>
+            <p><span class="color-box" style="background-color: #f1c40f;"></span> Medie</p>
+            <p><span class="color-box" style="background-color: #3498db;"></span> Scăzută</p>
+            <p>Grosimea muchiei: Număr de proiecte comune</p>
+        </div>
+        <div id="community-legend" style="display:none;">
+            <strong>Evidențiere Comunități (Culoare):</strong>
+            <div id="community-legend-list"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const RAW_NODES = [
+  {
+    "id": "Artemie C\u0102T\u0102NOI",
+    "label": "Artemie C\u0102T\u0102NOI",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.1694915254237288,
+    "betweenness_val": 0.09798224374495558,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Artemie C\u0102T\u0102NOI</b><br>Comunitate: 1<br>Grad Re\u021bea: 10<br>Centralitate Grad: 0.169 (High)<br>Centralitate Betweenness: 0.098 (High)"
+  },
+  {
+    "id": "Veronica RO\u0218CA",
+    "label": "Veronica RO\u0218CA",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.15254237288135594,
+    "betweenness_val": 0.05521536227263869,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Veronica RO\u0218CA</b><br>Comunitate: 1<br>Grad Re\u021bea: 9<br>Centralitate Grad: 0.153 (High)<br>Centralitate Betweenness: 0.055 (High)"
+  },
+  {
+    "id": "Dorian ISTRATII",
+    "label": "Dorian ISTRATII",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.06779661016949153,
+    "betweenness_val": 0.017221897525813365,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Dorian ISTRATII</b><br>Comunitate: 7<br>Grad Re\u021bea: 4<br>Centralitate Grad: 0.068 (High)<br>Centralitate Betweenness: 0.017 (Medium)"
+  },
+  {
+    "id": "Radu MARIAN",
+    "label": "Radu MARIAN",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.22033898305084745,
+    "betweenness_val": 0.1194604051705162,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Radu MARIAN</b><br>Comunitate: 7<br>Grad Re\u021bea: 13<br>Centralitate Grad: 0.220 (High)<br>Centralitate Betweenness: 0.119 (High)"
+  },
+  {
+    "id": "Boris MARCOCI",
+    "label": "Boris MARCOCI",
+    "community": 2,
+    "community_color": "#9b59b6",
+    "degree_val": 0.11864406779661017,
+    "betweenness_val": 0.01916539529046835,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Boris MARCOCI</b><br>Comunitate: 3<br>Grad Re\u021bea: 7<br>Centralitate Grad: 0.119 (High)<br>Centralitate Betweenness: 0.019 (Medium)"
+  },
+  {
+    "id": "Lilian CARP",
+    "label": "Lilian CARP",
+    "community": 2,
+    "community_color": "#9b59b6",
+    "degree_val": 0.11864406779661017,
+    "betweenness_val": 0.018070999719158688,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Lilian CARP</b><br>Comunitate: 3<br>Grad Re\u021bea: 7<br>Centralitate Grad: 0.119 (High)<br>Centralitate Betweenness: 0.018 (Medium)"
+  },
+  {
+    "id": "Eugeniu SINCHEVICI",
+    "label": "Eugeniu SINCHEVICI",
+    "community": 3,
+    "community_color": "#34495e",
+    "degree_val": 0.05084745762711865,
+    "betweenness_val": 0.005690768417244162,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Eugeniu SINCHEVICI</b><br>Comunitate: 4<br>Grad Re\u021bea: 3<br>Centralitate Grad: 0.051 (Medium)<br>Centralitate Betweenness: 0.006 (Low)"
+  },
+  {
+    "id": "Liliana NICOLAESCU-ONOFREI",
+    "label": "Liliana NICOLAESCU-ONOFREI",
+    "community": 3,
+    "community_color": "#34495e",
+    "degree_val": 0.11864406779661017,
+    "betweenness_val": 0.04325373632796192,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Liliana NICOLAESCU-ONOFREI</b><br>Comunitate: 4<br>Grad Re\u021bea: 7<br>Centralitate Grad: 0.119 (High)<br>Centralitate Betweenness: 0.043 (High)"
+  },
+  {
+    "id": "Andrian CHEPTONAR",
+    "label": "Andrian CHEPTONAR",
+    "community": 2,
+    "community_color": "#9b59b6",
+    "degree_val": 0.15254237288135594,
+    "betweenness_val": 0.07196647108979078,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Andrian CHEPTONAR</b><br>Comunitate: 3<br>Grad Re\u021bea: 9<br>Centralitate Grad: 0.153 (High)<br>Centralitate Betweenness: 0.072 (High)"
+  },
+  {
+    "id": "Adrian BEL\u00ceI",
+    "label": "Adrian BEL\u00ceI",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.1864406779661017,
+    "betweenness_val": 0.0927354449563684,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Adrian BEL\u00ceI</b><br>Comunitate: 1<br>Grad Re\u021bea: 11<br>Centralitate Grad: 0.186 (High)<br>Centralitate Betweenness: 0.093 (High)"
+  },
+  {
+    "id": "Alina DANDARA",
+    "label": "Alina DANDARA",
+    "community": 4,
+    "community_color": "#e74c3c",
+    "degree_val": 0.1016949152542373,
+    "betweenness_val": 0.02232125462692383,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Alina DANDARA</b><br>Comunitate: 5<br>Grad Re\u021bea: 6<br>Centralitate Grad: 0.102 (High)<br>Centralitate Betweenness: 0.022 (Medium)"
+  },
+  {
+    "id": "Doina GHERMAN",
+    "label": "Doina GHERMAN",
+    "community": 4,
+    "community_color": "#e74c3c",
+    "degree_val": 0.1016949152542373,
+    "betweenness_val": 0.01502355524856986,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Doina GHERMAN</b><br>Comunitate: 5<br>Grad Re\u021bea: 6<br>Centralitate Grad: 0.102 (High)<br>Centralitate Betweenness: 0.015 (Medium)"
+  },
+  {
+    "id": "Angela MUNTEANU-POJOGA",
+    "label": "Angela MUNTEANU-POJOGA",
+    "community": 5,
+    "community_color": "#2ecc71",
+    "degree_val": 0.0847457627118644,
+    "betweenness_val": 0.06028638223261249,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Angela MUNTEANU-POJOGA</b><br>Comunitate: 6<br>Grad Re\u021bea: 5<br>Centralitate Grad: 0.085 (High)<br>Centralitate Betweenness: 0.060 (High)"
+  },
+  {
+    "id": "Grigore NOVAC",
+    "label": "Grigore NOVAC",
+    "community": 5,
+    "community_color": "#2ecc71",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Grigore NOVAC</b><br>Comunitate: 6<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Larisa NOVAC",
+    "label": "Larisa NOVAC",
+    "community": 3,
+    "community_color": "#34495e",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.002815117864796415,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Larisa NOVAC</b><br>Comunitate: 4<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.003 (Low)"
+  },
+  {
+    "id": "Igor CHIRIAC",
+    "label": "Igor CHIRIAC",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.11864406779661017,
+    "betweenness_val": 0.04056202418271383,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Igor CHIRIAC</b><br>Comunitate: 1<br>Grad Re\u021bea: 7<br>Centralitate Grad: 0.119 (High)<br>Centralitate Betweenness: 0.041 (High)"
+  },
+  {
+    "id": "Alexandr TRUBCA",
+    "label": "Alexandr TRUBCA",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.22033898305084745,
+    "betweenness_val": 0.11755776855133955,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Alexandr TRUBCA</b><br>Comunitate: 7<br>Grad Re\u021bea: 13<br>Centralitate Grad: 0.220 (High)<br>Centralitate Betweenness: 0.118 (High)"
+  },
+  {
+    "id": "Viorel BARDA",
+    "label": "Viorel BARDA",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Viorel BARDA</b><br>Comunitate: 7<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Boris POPA",
+    "label": "Boris POPA",
+    "community": 2,
+    "community_color": "#9b59b6",
+    "degree_val": 0.05084745762711865,
+    "betweenness_val": 0.0018709470930394364,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Boris POPA</b><br>Comunitate: 3<br>Grad Re\u021bea: 3<br>Centralitate Grad: 0.051 (Medium)<br>Centralitate Betweenness: 0.002 (Low)"
+  },
+  {
+    "id": "Ina CO\u0218ERU",
+    "label": "Ina CO\u0218ERU",
+    "community": 7,
+    "community_color": "#3498db",
+    "degree_val": 0.06779661016949153,
+    "betweenness_val": 0.009798705093854127,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Ina CO\u0218ERU</b><br>Comunitate: 8<br>Grad Re\u021bea: 4<br>Centralitate Grad: 0.068 (High)<br>Centralitate Betweenness: 0.010 (Medium)"
+  },
+  {
+    "id": "Mariana CU\u0218NIR",
+    "label": "Mariana CU\u0218NIR",
+    "community": 7,
+    "community_color": "#3498db",
+    "degree_val": 0.05084745762711865,
+    "betweenness_val": 0.0016816954718766523,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Mariana CU\u0218NIR</b><br>Comunitate: 8<br>Grad Re\u021bea: 3<br>Centralitate Grad: 0.051 (Medium)<br>Centralitate Betweenness: 0.002 (Low)"
+  },
+  {
+    "id": "Sergiu LAZARENCU",
+    "label": "Sergiu LAZARENCU",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.06779661016949153,
+    "betweenness_val": 0.035724722384570425,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Sergiu LAZARENCU</b><br>Comunitate: 7<br>Grad Re\u021bea: 4<br>Centralitate Grad: 0.068 (High)<br>Centralitate Betweenness: 0.036 (High)"
+  },
+  {
+    "id": "Marina MOROZOVA",
+    "label": "Marina MOROZOVA",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.11864406779661017,
+    "betweenness_val": 0.04745073259100144,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Marina MOROZOVA</b><br>Comunitate: 7<br>Grad Re\u021bea: 7<br>Centralitate Grad: 0.119 (High)<br>Centralitate Betweenness: 0.047 (High)"
+  },
+  {
+    "id": "Ana OGLINDA",
+    "label": "Ana OGLINDA",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.15254237288135594,
+    "betweenness_val": 0.05228158262933248,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Ana OGLINDA</b><br>Comunitate: 1<br>Grad Re\u021bea: 9<br>Centralitate Grad: 0.153 (High)<br>Centralitate Betweenness: 0.052 (High)"
+  },
+  {
+    "id": "Vasile GR\u0102DINARU",
+    "label": "Vasile GR\u0102DINARU",
+    "community": 2,
+    "community_color": "#9b59b6",
+    "degree_val": 0.1016949152542373,
+    "betweenness_val": 0.012124564506212666,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Vasile GR\u0102DINARU</b><br>Comunitate: 3<br>Grad Re\u021bea: 6<br>Centralitate Grad: 0.102 (High)<br>Centralitate Betweenness: 0.012 (Medium)"
+  },
+  {
+    "id": "Victor SP\u00ceNU",
+    "label": "Victor SP\u00ceNU",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.0008523280732515097,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Victor SP\u00ceNU</b><br>Comunitate: 7<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.001 (Low)"
+  },
+  {
+    "id": "Igor GROSU",
+    "label": "Igor GROSU",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.0847457627118644,
+    "betweenness_val": 0.013195556635065693,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Igor GROSU</b><br>Comunitate: 1<br>Grad Re\u021bea: 5<br>Centralitate Grad: 0.085 (High)<br>Centralitate Betweenness: 0.013 (Medium)"
+  },
+  {
+    "id": "Marcela ADAM",
+    "label": "Marcela ADAM",
+    "community": 3,
+    "community_color": "#34495e",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.002990453925579583,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Marcela ADAM</b><br>Comunitate: 4<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.003 (Low)"
+  },
+  {
+    "id": "Larisa VOLOH",
+    "label": "Larisa VOLOH",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.1016949152542373,
+    "betweenness_val": 0.047415437669674966,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Larisa VOLOH</b><br>Comunitate: 1<br>Grad Re\u021bea: 6<br>Centralitate Grad: 0.102 (High)<br>Centralitate Betweenness: 0.047 (High)"
+  },
+  {
+    "id": "Ana CALINICI",
+    "label": "Ana CALINICI",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.0,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Ana CALINICI</b><br>Comunitate: 1<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Gheorghe ICHIM",
+    "label": "Gheorghe ICHIM",
+    "community": 8,
+    "community_color": "#95a5a6",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Gheorghe ICHIM</b><br>Comunitate: 9<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Oleg CANA\u021aUI",
+    "label": "Oleg CANA\u021aUI",
+    "community": 8,
+    "community_color": "#95a5a6",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Oleg CANA\u021aUI</b><br>Comunitate: 9<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Ion GROZA",
+    "label": "Ion GROZA",
+    "community": 4,
+    "community_color": "#e74c3c",
+    "degree_val": 0.05084745762711865,
+    "betweenness_val": 0.0017978904010464503,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Ion GROZA</b><br>Comunitate: 5<br>Grad Re\u021bea: 3<br>Centralitate Grad: 0.051 (Medium)<br>Centralitate Betweenness: 0.002 (Low)"
+  },
+  {
+    "id": "Oazu NANTOI",
+    "label": "Oazu NANTOI",
+    "community": 9,
+    "community_color": "#f1c40f",
+    "degree_val": 0.06779661016949153,
+    "betweenness_val": 0.056787377827705106,
+    "degree_tier": "High",
+    "betweenness_tier": "High",
+    "title": "<b>Oazu NANTOI</b><br>Comunitate: 10<br>Grad Re\u021bea: 4<br>Centralitate Grad: 0.068 (High)<br>Centralitate Betweenness: 0.057 (High)"
+  },
+  {
+    "id": "Ana SPEIANU",
+    "label": "Ana SPEIANU",
+    "community": 3,
+    "community_color": "#34495e",
+    "degree_val": 0.06779661016949153,
+    "betweenness_val": 0.010308647129219892,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Ana SPEIANU</b><br>Comunitate: 4<br>Grad Re\u021bea: 4<br>Centralitate Grad: 0.068 (High)<br>Centralitate Betweenness: 0.010 (Medium)"
+  },
+  {
+    "id": "Efimia BANDALAC",
+    "label": "Efimia BANDALAC",
+    "community": 3,
+    "community_color": "#34495e",
+    "degree_val": 0.05084745762711865,
+    "betweenness_val": 0.004266510812390414,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Efimia BANDALAC</b><br>Comunitate: 4<br>Grad Re\u021bea: 3<br>Centralitate Grad: 0.051 (Medium)<br>Centralitate Betweenness: 0.004 (Low)"
+  },
+  {
+    "id": "Ion POIA",
+    "label": "Ion POIA",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.0,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Ion POIA</b><br>Comunitate: 7<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Liliana GROSU",
+    "label": "Liliana GROSU",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.00493818961089563,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Liliana GROSU</b><br>Comunitate: 7<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.005 (Low)"
+  },
+  {
+    "id": "Adela R\u0102ILEANU",
+    "label": "Adela R\u0102ILEANU",
+    "community": 11,
+    "community_color": "#2980b9",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Adela R\u0102ILEANU</b><br>Comunitate: 12<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Vlad BATR\u00ceNCEA",
+    "label": "Vlad BATR\u00ceNCEA",
+    "community": 11,
+    "community_color": "#2980b9",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.0005844535359438924,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Vlad BATR\u00ceNCEA</b><br>Comunitate: 12<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.001 (Low)"
+  },
+  {
+    "id": "Maria PANCU",
+    "label": "Maria PANCU",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Maria PANCU</b><br>Comunitate: 1<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Ion BABICI",
+    "label": "Ion BABICI",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Ion BABICI</b><br>Comunitate: 7<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Ersilia QATRAWI",
+    "label": "Ersilia QATRAWI",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.05084745762711865,
+    "betweenness_val": 0.030864017143970385,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Medium",
+    "title": "<b>Ersilia QATRAWI</b><br>Comunitate: 7<br>Grad Re\u021bea: 3<br>Centralitate Grad: 0.051 (Medium)<br>Centralitate Betweenness: 0.031 (Medium)"
+  },
+  {
+    "id": "Virgiliu P\u00c2SLARIUC",
+    "label": "Virgiliu P\u00c2SLARIUC",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Virgiliu P\u00c2SLARIUC</b><br>Comunitate: 7<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Corneliu FURCULI\u021a\u0102",
+    "label": "Corneliu FURCULI\u021a\u0102",
+    "community": 1,
+    "community_color": "#f39c12",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.0,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Corneliu FURCULI\u021a\u0102</b><br>Comunitate: 2<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Radu MUDREAC",
+    "label": "Radu MUDREAC",
+    "community": 1,
+    "community_color": "#f39c12",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.0,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Radu MUDREAC</b><br>Comunitate: 2<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Marcela NISTOR",
+    "label": "Marcela NISTOR",
+    "community": 9,
+    "community_color": "#f1c40f",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.027469316189362943,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Medium",
+    "title": "<b>Marcela NISTOR</b><br>Comunitate: 10<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.027 (Medium)"
+  },
+  {
+    "id": "Vitali GAVROUC",
+    "label": "Vitali GAVROUC",
+    "community": 9,
+    "community_color": "#f1c40f",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Vitali GAVROUC</b><br>Comunitate: 10<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Olesea STAMATE",
+    "label": "Olesea STAMATE",
+    "community": 4,
+    "community_color": "#e74c3c",
+    "degree_val": 0.06779661016949153,
+    "betweenness_val": 0.010271075116194928,
+    "degree_tier": "High",
+    "betweenness_tier": "Medium",
+    "title": "<b>Olesea STAMATE</b><br>Comunitate: 5<br>Grad Re\u021bea: 4<br>Centralitate Grad: 0.068 (High)<br>Centralitate Betweenness: 0.010 (Medium)"
+  },
+  {
+    "id": "Diana CARAMAN",
+    "label": "Diana CARAMAN",
+    "community": 10,
+    "community_color": "#d35400",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Diana CARAMAN</b><br>Comunitate: 11<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Inga SIBOVA",
+    "label": "Inga SIBOVA",
+    "community": 10,
+    "community_color": "#d35400",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Inga SIBOVA</b><br>Comunitate: 11<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Mariana LUCRE\u021aEANU",
+    "label": "Mariana LUCRE\u021aEANU",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Mariana LUCRE\u021aEANU</b><br>Comunitate: 1<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Petru BURDUJA",
+    "label": "Petru BURDUJA",
+    "community": 1,
+    "community_color": "#f39c12",
+    "degree_val": 0.05084745762711865,
+    "betweenness_val": 0.0011689070718877848,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Petru BURDUJA</b><br>Comunitate: 2<br>Grad Re\u021bea: 3<br>Centralitate Grad: 0.051 (Medium)<br>Centralitate Betweenness: 0.001 (Low)"
+  },
+  {
+    "id": "Alla DAROVANNAIA",
+    "label": "Alla DAROVANNAIA",
+    "community": 11,
+    "community_color": "#2980b9",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Alla DAROVANNAIA</b><br>Comunitate: 12<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Natalia DAVIDOVICI",
+    "label": "Natalia DAVIDOVICI",
+    "community": 4,
+    "community_color": "#e74c3c",
+    "degree_val": 0.05084745762711865,
+    "betweenness_val": 0.002510367092482814,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Low",
+    "title": "<b>Natalia DAVIDOVICI</b><br>Comunitate: 5<br>Grad Re\u021bea: 3<br>Centralitate Grad: 0.051 (Medium)<br>Centralitate Betweenness: 0.003 (Low)"
+  },
+  {
+    "id": "Maria GON\u021aA",
+    "label": "Maria GON\u021aA",
+    "community": 0,
+    "community_color": "#1abc9c",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Maria GON\u021aA</b><br>Comunitate: 1<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Ion \u0218PAC",
+    "label": "Ion \u0218PAC",
+    "community": 2,
+    "community_color": "#9b59b6",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Ion \u0218PAC</b><br>Comunitate: 3<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Evghenia COJOCARI",
+    "label": "Evghenia COJOCARI",
+    "community": 5,
+    "community_color": "#2ecc71",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Evghenia COJOCARI</b><br>Comunitate: 6<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Alla PILIPE\u021aCAIA",
+    "label": "Alla PILIPE\u021aCAIA",
+    "community": 1,
+    "community_color": "#f39c12",
+    "degree_val": 0.01694915254237288,
+    "betweenness_val": 0.0,
+    "degree_tier": "Low",
+    "betweenness_tier": "Low",
+    "title": "<b>Alla PILIPE\u021aCAIA</b><br>Comunitate: 2<br>Grad Re\u021bea: 1<br>Centralitate Grad: 0.017 (Low)<br>Centralitate Betweenness: 0.000 (Low)"
+  },
+  {
+    "id": "Ana RACU",
+    "label": "Ana RACU",
+    "community": 6,
+    "community_color": "#e67e22",
+    "degree_val": 0.03389830508474576,
+    "betweenness_val": 0.006082744452119085,
+    "degree_tier": "Medium",
+    "betweenness_tier": "Medium",
+    "title": "<b>Ana RACU</b><br>Comunitate: 7<br>Grad Re\u021bea: 2<br>Centralitate Grad: 0.034 (Medium)<br>Centralitate Betweenness: 0.006 (Medium)"
+  }
+];
+    const EDGES = new vis.DataSet([
+  {
+    "id": 0,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Veronica RO\u0218CA",
+    "value": 11,
+    "title": "Colabor\u0103ri: 11",
+    "width": 5.0,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 1,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Igor CHIRIAC",
+    "value": 3,
+    "title": "Colabor\u0103ri: 3",
+    "width": 2.090909090909091,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 2,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Ana OGLINDA",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 3,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Boris POPA",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 4,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Larisa VOLOH",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 5,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Vasile GR\u0102DINARU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 6,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Angela MUNTEANU-POJOGA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 7,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Lilian CARP",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 8,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Ersilia QATRAWI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 9,
+    "from": "Artemie C\u0102T\u0102NOI",
+    "to": "Ana RACU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 10,
+    "from": "Veronica RO\u0218CA",
+    "to": "Adrian BEL\u00ceI",
+    "value": 5,
+    "title": "Colabor\u0103ri: 5",
+    "width": 2.8181818181818183,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 11,
+    "from": "Veronica RO\u0218CA",
+    "to": "Igor CHIRIAC",
+    "value": 3,
+    "title": "Colabor\u0103ri: 3",
+    "width": 2.090909090909091,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 12,
+    "from": "Veronica RO\u0218CA",
+    "to": "Andrian CHEPTONAR",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 13,
+    "from": "Veronica RO\u0218CA",
+    "to": "Alina DANDARA",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 14,
+    "from": "Veronica RO\u0218CA",
+    "to": "Ana CALINICI",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 15,
+    "from": "Veronica RO\u0218CA",
+    "to": "Lilian CARP",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 16,
+    "from": "Veronica RO\u0218CA",
+    "to": "Boris POPA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 17,
+    "from": "Veronica RO\u0218CA",
+    "to": "Igor GROSU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 18,
+    "from": "Dorian ISTRATII",
+    "to": "Radu MARIAN",
+    "value": 6,
+    "title": "Colabor\u0103ri: 6",
+    "width": 3.1818181818181817,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 19,
+    "from": "Dorian ISTRATII",
+    "to": "Alexandr TRUBCA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 20,
+    "from": "Dorian ISTRATII",
+    "to": "Eugeniu SINCHEVICI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 21,
+    "from": "Dorian ISTRATII",
+    "to": "Efimia BANDALAC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 22,
+    "from": "Radu MARIAN",
+    "to": "Sergiu LAZARENCU",
+    "value": 3,
+    "title": "Colabor\u0103ri: 3",
+    "width": 2.090909090909091,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 23,
+    "from": "Radu MARIAN",
+    "to": "Marina MOROZOVA",
+    "value": 3,
+    "title": "Colabor\u0103ri: 3",
+    "width": 2.090909090909091,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 24,
+    "from": "Radu MARIAN",
+    "to": "Victor SP\u00ceNU",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 25,
+    "from": "Radu MARIAN",
+    "to": "Ana SPEIANU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 26,
+    "from": "Radu MARIAN",
+    "to": "Andrian CHEPTONAR",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 27,
+    "from": "Radu MARIAN",
+    "to": "Alexandr TRUBCA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 28,
+    "from": "Radu MARIAN",
+    "to": "Ion POIA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 29,
+    "from": "Radu MARIAN",
+    "to": "Ion BABICI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 30,
+    "from": "Radu MARIAN",
+    "to": "Adrian BEL\u00ceI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 31,
+    "from": "Radu MARIAN",
+    "to": "Ina CO\u0218ERU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 32,
+    "from": "Radu MARIAN",
+    "to": "Boris MARCOCI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 33,
+    "from": "Radu MARIAN",
+    "to": "Olesea STAMATE",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 34,
+    "from": "Boris MARCOCI",
+    "to": "Lilian CARP",
+    "value": 5,
+    "title": "Colabor\u0103ri: 5",
+    "width": 2.8181818181818183,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 35,
+    "from": "Boris MARCOCI",
+    "to": "Boris POPA",
+    "value": 3,
+    "title": "Colabor\u0103ri: 3",
+    "width": 2.090909090909091,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 36,
+    "from": "Boris MARCOCI",
+    "to": "Vasile GR\u0102DINARU",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 37,
+    "from": "Boris MARCOCI",
+    "to": "Alexandr TRUBCA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 38,
+    "from": "Boris MARCOCI",
+    "to": "Mariana CU\u0218NIR",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 39,
+    "from": "Boris MARCOCI",
+    "to": "Igor GROSU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 40,
+    "from": "Lilian CARP",
+    "to": "Andrian CHEPTONAR",
+    "value": 5,
+    "title": "Colabor\u0103ri: 5",
+    "width": 2.8181818181818183,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 41,
+    "from": "Lilian CARP",
+    "to": "Vasile GR\u0102DINARU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 42,
+    "from": "Lilian CARP",
+    "to": "Natalia DAVIDOVICI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 43,
+    "from": "Lilian CARP",
+    "to": "Igor CHIRIAC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 44,
+    "from": "Eugeniu SINCHEVICI",
+    "to": "Liliana NICOLAESCU-ONOFREI",
+    "value": 5,
+    "title": "Colabor\u0103ri: 5",
+    "width": 2.8181818181818183,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 45,
+    "from": "Eugeniu SINCHEVICI",
+    "to": "Alina DANDARA",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 46,
+    "from": "Liliana NICOLAESCU-ONOFREI",
+    "to": "Larisa NOVAC",
+    "value": 3,
+    "title": "Colabor\u0103ri: 3",
+    "width": 2.090909090909091,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 47,
+    "from": "Liliana NICOLAESCU-ONOFREI",
+    "to": "Marcela ADAM",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 48,
+    "from": "Liliana NICOLAESCU-ONOFREI",
+    "to": "Ana SPEIANU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 49,
+    "from": "Liliana NICOLAESCU-ONOFREI",
+    "to": "Efimia BANDALAC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 50,
+    "from": "Liliana NICOLAESCU-ONOFREI",
+    "to": "Ana OGLINDA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 51,
+    "from": "Liliana NICOLAESCU-ONOFREI",
+    "to": "Angela MUNTEANU-POJOGA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 52,
+    "from": "Andrian CHEPTONAR",
+    "to": "Marina MOROZOVA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 53,
+    "from": "Andrian CHEPTONAR",
+    "to": "Ana SPEIANU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 54,
+    "from": "Andrian CHEPTONAR",
+    "to": "Igor CHIRIAC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 55,
+    "from": "Andrian CHEPTONAR",
+    "to": "Ion POIA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 56,
+    "from": "Andrian CHEPTONAR",
+    "to": "Ion \u0218PAC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 57,
+    "from": "Andrian CHEPTONAR",
+    "to": "Oazu NANTOI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 58,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Doina GHERMAN",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 59,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Igor GROSU",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 60,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Ana OGLINDA",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 61,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Oazu NANTOI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 62,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Vasile GR\u0102DINARU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 63,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Marina MOROZOVA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 64,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Maria PANCU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 65,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Mariana LUCRE\u021aEANU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 66,
+    "from": "Adrian BEL\u00ceI",
+    "to": "Natalia DAVIDOVICI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 67,
+    "from": "Alina DANDARA",
+    "to": "Doina GHERMAN",
+    "value": 4,
+    "title": "Colabor\u0103ri: 4",
+    "width": 2.4545454545454546,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 68,
+    "from": "Alina DANDARA",
+    "to": "Ina CO\u0218ERU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 69,
+    "from": "Alina DANDARA",
+    "to": "Olesea STAMATE",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 70,
+    "from": "Alina DANDARA",
+    "to": "Victor SP\u00ceNU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 71,
+    "from": "Doina GHERMAN",
+    "to": "Marina MOROZOVA",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 72,
+    "from": "Doina GHERMAN",
+    "to": "Ion GROZA",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 73,
+    "from": "Doina GHERMAN",
+    "to": "Ana OGLINDA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 74,
+    "from": "Doina GHERMAN",
+    "to": "Alexandr TRUBCA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 75,
+    "from": "Angela MUNTEANU-POJOGA",
+    "to": "Grigore NOVAC",
+    "value": 4,
+    "title": "Colabor\u0103ri: 4",
+    "width": 2.4545454545454546,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 76,
+    "from": "Angela MUNTEANU-POJOGA",
+    "to": "Igor CHIRIAC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 77,
+    "from": "Angela MUNTEANU-POJOGA",
+    "to": "Evghenia COJOCARI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 78,
+    "from": "Larisa NOVAC",
+    "to": "Sergiu LAZARENCU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 79,
+    "from": "Igor CHIRIAC",
+    "to": "Ion GROZA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 80,
+    "from": "Igor CHIRIAC",
+    "to": "Olesea STAMATE",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 81,
+    "from": "Alexandr TRUBCA",
+    "to": "Viorel BARDA",
+    "value": 3,
+    "title": "Colabor\u0103ri: 3",
+    "width": 2.090909090909091,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 82,
+    "from": "Alexandr TRUBCA",
+    "to": "Vasile GR\u0102DINARU",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 83,
+    "from": "Alexandr TRUBCA",
+    "to": "Ana OGLINDA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 84,
+    "from": "Alexandr TRUBCA",
+    "to": "Mariana CU\u0218NIR",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 85,
+    "from": "Alexandr TRUBCA",
+    "to": "Igor GROSU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 86,
+    "from": "Alexandr TRUBCA",
+    "to": "Marina MOROZOVA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 87,
+    "from": "Alexandr TRUBCA",
+    "to": "Larisa VOLOH",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 88,
+    "from": "Alexandr TRUBCA",
+    "to": "Oazu NANTOI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 89,
+    "from": "Alexandr TRUBCA",
+    "to": "Sergiu LAZARENCU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 90,
+    "from": "Ina CO\u0218ERU",
+    "to": "Mariana CU\u0218NIR",
+    "value": 3,
+    "title": "Colabor\u0103ri: 3",
+    "width": 2.090909090909091,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 91,
+    "from": "Ina CO\u0218ERU",
+    "to": "Larisa VOLOH",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 92,
+    "from": "Sergiu LAZARENCU",
+    "to": "Ersilia QATRAWI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 93,
+    "from": "Marina MOROZOVA",
+    "to": "Marcela ADAM",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 94,
+    "from": "Marina MOROZOVA",
+    "to": "Liliana GROSU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 95,
+    "from": "Ana OGLINDA",
+    "to": "Vasile GR\u0102DINARU",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 96,
+    "from": "Ana OGLINDA",
+    "to": "Ana SPEIANU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 97,
+    "from": "Ana OGLINDA",
+    "to": "Larisa VOLOH",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 98,
+    "from": "Ana OGLINDA",
+    "to": "Ion GROZA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 99,
+    "from": "Igor GROSU",
+    "to": "Ana CALINICI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 100,
+    "from": "Larisa VOLOH",
+    "to": "Maria GON\u021aA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 101,
+    "from": "Larisa VOLOH",
+    "to": "Efimia BANDALAC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 102,
+    "from": "Gheorghe ICHIM",
+    "to": "Oleg CANA\u021aUI",
+    "value": 2,
+    "title": "Colabor\u0103ri: 2",
+    "width": 1.7272727272727273,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 103,
+    "from": "Oazu NANTOI",
+    "to": "Marcela NISTOR",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 104,
+    "from": "Liliana GROSU",
+    "to": "Ana RACU",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 105,
+    "from": "Adela R\u0102ILEANU",
+    "to": "Vlad BATR\u00ceNCEA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 106,
+    "from": "Vlad BATR\u00ceNCEA",
+    "to": "Alla DAROVANNAIA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 107,
+    "from": "Ersilia QATRAWI",
+    "to": "Virgiliu P\u00c2SLARIUC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 108,
+    "from": "Corneliu FURCULI\u021a\u0102",
+    "to": "Radu MUDREAC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 109,
+    "from": "Corneliu FURCULI\u021a\u0102",
+    "to": "Petru BURDUJA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 110,
+    "from": "Radu MUDREAC",
+    "to": "Petru BURDUJA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 111,
+    "from": "Marcela NISTOR",
+    "to": "Vitali GAVROUC",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 112,
+    "from": "Olesea STAMATE",
+    "to": "Natalia DAVIDOVICI",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 113,
+    "from": "Diana CARAMAN",
+    "to": "Inga SIBOVA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  },
+  {
+    "id": 114,
+    "from": "Petru BURDUJA",
+    "to": "Alla PILIPE\u021aCAIA",
+    "value": 1,
+    "title": "Colabor\u0103ri: 1",
+    "width": 1.3636363636363638,
+    "smooth": {
+      "enabled": true,
+      "type": "dynamic"
+    }
+  }
+]);
+    const COLOR_TIERS = {"High": "#e74c3c", "Medium": "#f1c40f", "Low": "#3498db"};
+    const COMMUNITY_MAP = {"0": "#1abc9c", "1": "#f39c12", "2": "#9b59b6", "3": "#34495e", "4": "#e74c3c", "5": "#2ecc71", "6": "#e67e22", "7": "#3498db", "8": "#95a5a6", "9": "#f1c40f", "10": "#d35400", "11": "#2980b9"};
+    
+    const MAX_DEGREE = 0.22033898305084745;
+    const MAX_BETWEENNESS = 0.1194604051705162;
+
+    const MIN_SIZE = 15;
+    const MAX_SIZE = 55;
+    
+    let network = null;
+    let NODES = new vis.DataSet(RAW_NODES);
+
+    function calculateSize(value, max_value) {
+        if (max_value === 0 || value === 0) return MIN_SIZE;
+        return MIN_SIZE + (MAX_SIZE - MIN_SIZE) * (value / max_value);
+    }
+
+    function updateNetwork() {
+        const mode = document.getElementById('centralitySelect').value;
+        const tempNodes = [];
+
+        RAW_NODES.forEach(node => {
+            let color, size;
+            let title = node.title;
+
+            if (mode === 'community') {
+                color = node.community_color;
+                size = calculateSize(node.degree_val, MAX_DEGREE); 
+                title += "<br>Vizualizare Culoare: Comunitate";
+
+            } else if (mode === 'degree') {
+                color = COLOR_TIERS[node.degree_tier];
+                size = calculateSize(node.degree_val, MAX_DEGREE);
+                title += "<br>Vizualizare: Grad";
+
+            } else if (mode === 'betweenness') {
+                color = COLOR_TIERS[node.betweenness_tier];
+                size = calculateSize(node.betweenness_val, MAX_BETWEENNESS);
+                title += "<br>Vizualizare: Betweenness";
+            }
+
+            tempNodes.push({
+                ...node,
+                color: {
+                    border: '#ffffff',
+                    background: color,
+                    highlight: { border: '#000000', background: color }
+                },
+                size: size,
+                title: title,
+                shadow: true
+            });
+        });
+        
+        NODES.update(tempNodes);
+        updateLegend(mode);
+    }
+    
+    function updateLegend(mode) {
+        const centralityLegend = document.getElementById('centrality-legend');
+        const communityLegend = document.getElementById('community-legend');
+        const communityListDiv = document.getElementById('community-legend-list');
+
+        if (mode === 'community') {
+            centralityLegend.style.display = 'none';
+            communityLegend.style.display = 'block';
+            
+            let html = '';
+            Object.keys(COMMUNITY_MAP).sort((a, b) => parseInt(a) - parseInt(b)).forEach(id_key => {
+                const color = COMMUNITY_MAP[id_key];
+                const displayId = parseInt(id_key) + 1; 
+                html += '<div class="community-legend-item"><span class="color-box" style="background-color: ' + color + ';"></span> Comunitatea ' + displayId + '</div>';
+            });
+            communityListDiv.innerHTML = html;
+
+        } else {
+            centralityLegend.style.display = 'block';
+            communityLegend.style.display = 'none';
+        }
+    }
+
+    function drawNetwork() {
+        var container = document.getElementById('mynetwork');
+        var data = { nodes: NODES, edges: EDGES };
+        
+        var options = {
+            nodes: {
+                shape: 'dot',
+                scaling: { min: MIN_SIZE, max: MAX_SIZE },
+                font: { 
+                    face: 'Arial', 
+                    size: 14, 
+                    color: '#ffffff',
+                    strokeWidth: 2, 
+                    strokeColor: '#333'
+                }
+            },
+            edges: {
+                color: { color: '#ccc', highlight: '#fff' },
+                width: 1,
+                smooth: { type: 'dynamic' }
+            },
+            physics: {
+                enabled: true,
+                solver: 'forceAtlas2Based', 
+                forceAtlas2Based: {
+                    gravitationalConstant: -20, 
+                    centralGravity: 0.005, 
+                    springLength: 100,
+                    springConstant: 0.1, 
+                    damping: 0.4
+                },
+                minVelocity: 0.75,
+                stabilization: { iterations: 2000 }
+            },
+            // CORECȚIE FINALĂ: Setăm proprietatea allowHtml direct în interaction, 
+            // deși am setat-o și în configure în pasul anterior, 
+            // menținem structura simplă și adăugăm asigurări CSS.
+            interaction: { 
+                tooltipDelay: 200, 
+                hover: true,
+                hoverConnectedEdges: true,
+                tooltip: { 
+                    allowHtml: true // Cea mai directă și (sperăm) funcțională setare
+                }
+            }
+        };
+
+        network = new vis.Network(container, data, options);
+        updateNetwork(); 
+    }
+
+    document.addEventListener('DOMContentLoaded', drawNetwork);
+</script>
+
+</body>
+</html>

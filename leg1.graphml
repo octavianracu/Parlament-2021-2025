@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/graphml">
+  <key id="label" for="node" attr.name="label" attr.type="string"/>
+  <key id="weight" for="edge" attr.name="weight" attr.type="int"/>
+  <graph id="G" edgedefault="undirected">
+    <node id="Adela RĂILEANU"><data key="label">Adela RĂILEANU</data></node>
+    <node id="Adrian BELÎI"><data key="label">Adrian BELÎI</data></node>
+    <node id="Alexandr TRUBCA"><data key="label">Alexandr TRUBCA</data></node>
+    <node id="Alina DANDARA"><data key="label">Alina DANDARA</data></node>
+    <node id="Alla DAROVANNAIA"><data key="label">Alla DAROVANNAIA</data></node>
+    <node id="Alla PILIPEȚCAIA"><data key="label">Alla PILIPEȚCAIA</data></node>
+    <node id="Ana CALINICI"><data key="label">Ana CALINICI</data></node>
+    <node id="Ana OGLINDA"><data key="label">Ana OGLINDA</data></node>
+    <node id="Ana RACU"><data key="label">Ana RACU</data></node>
+    <node id="Ana SPEIANU"><data key="label">Ana SPEIANU</data></node>
+    <node id="Andrian CHEPTONAR"><data key="label">Andrian CHEPTONAR</data></node>
+    <node id="Angela MUNTEANU-POJOGA"><data key="label">Angela MUNTEANU-POJOGA</data></node>
+    <node id="Artemie CĂTĂNOI"><data key="label">Artemie CĂTĂNOI</data></node>
+    <node id="Boris MARCOCI"><data key="label">Boris MARCOCI</data></node>
+    <node id="Boris POPA"><data key="label">Boris POPA</data></node>
+    <node id="Corneliu FURCULIȚĂ"><data key="label">Corneliu FURCULIȚĂ</data></node>
+    <node id="Diana CARAMAN"><data key="label">Diana CARAMAN</data></node>
+    <node id="Doina GHERMAN"><data key="label">Doina GHERMAN</data></node>
+    <node id="Dorian ISTRATII"><data key="label">Dorian ISTRATII</data></node>
+    <node id="Efimia BANDALAC"><data key="label">Efimia BANDALAC</data></node>
+    <node id="Ersilia QATRAWI"><data key="label">Ersilia QATRAWI</data></node>
+    <node id="Eugeniu SINCHEVICI"><data key="label">Eugeniu SINCHEVICI</data></node>
+    <node id="Evghenia COJOCARI"><data key="label">Evghenia COJOCARI</data></node>
+    <node id="Gheorghe ICHIM"><data key="label">Gheorghe ICHIM</data></node>
+    <node id="Grigore NOVAC"><data key="label">Grigore NOVAC</data></node>
+    <node id="Igor CHIRIAC"><data key="label">Igor CHIRIAC</data></node>
+    <node id="Igor GROSU"><data key="label">Igor GROSU</data></node>
+    <node id="Ina COȘERU"><data key="label">Ina COȘERU</data></node>
+    <node id="Inga SIBOVA"><data key="label">Inga SIBOVA</data></node>
+    <node id="Ion BABICI"><data key="label">Ion BABICI</data></node>
+    <node id="Ion GROZA"><data key="label">Ion GROZA</data></node>
+    <node id="Ion POIA"><data key="label">Ion POIA</data></node>
+    <node id="Ion ȘPAC"><data key="label">Ion ȘPAC</data></node>
+    <node id="Larisa NOVAC"><data key="label">Larisa NOVAC</data></node>
+    <node id="Larisa VOLOH"><data key="label">Larisa VOLOH</data></node>
+    <node id="Lilian CARP"><data key="label">Lilian CARP</data></node>
+    <node id="Liliana GROSU"><data key="label">Liliana GROSU</data></node>
+    <node id="Liliana NICOLAESCU-ONOFREI"><data key="label">Liliana NICOLAESCU-ONOFREI</data></node>
+    <node id="Marcela ADAM"><data key="label">Marcela ADAM</data></node>
+    <node id="Marcela NISTOR"><data key="label">Marcela NISTOR</data></node>
+    <node id="Maria GONȚA"><data key="label">Maria GONȚA</data></node>
+    <node id="Maria PANCU"><data key="label">Maria PANCU</data></node>
+    <node id="Mariana CUȘNIR"><data key="label">Mariana CUȘNIR</data></node>
+    <node id="Mariana LUCREȚEANU"><data key="label">Mariana LUCREȚEANU</data></node>
+    <node id="Marina MOROZOVA"><data key="label">Marina MOROZOVA</data></node>
+    <node id="Natalia DAVIDOVICI"><data key="label">Natalia DAVIDOVICI</data></node>
+    <node id="Oazu NANTOI"><data key="label">Oazu NANTOI</data></node>
+    <node id="Oleg CANAȚUI"><data key="label">Oleg CANAȚUI</data></node>
+    <node id="Olesea STAMATE"><data key="label">Olesea STAMATE</data></node>
+    <node id="Petru BURDUJA"><data key="label">Petru BURDUJA</data></node>
+    <node id="Radu MARIAN"><data key="label">Radu MARIAN</data></node>
+    <node id="Radu MUDREAC"><data key="label">Radu MUDREAC</data></node>
+    <node id="Sergiu LAZARENCU"><data key="label">Sergiu LAZARENCU</data></node>
+    <node id="Vasile GRĂDINARU"><data key="label">Vasile GRĂDINARU</data></node>
+    <node id="Veronica ROȘCA"><data key="label">Veronica ROȘCA</data></node>
+    <node id="Victor SPÎNU"><data key="label">Victor SPÎNU</data></node>
+    <node id="Viorel BARDA"><data key="label">Viorel BARDA</data></node>
+    <node id="Virgiliu PÂSLARIUC"><data key="label">Virgiliu PÂSLARIUC</data></node>
+    <node id="Vitali GAVROUC"><data key="label">Vitali GAVROUC</data></node>
+    <node id="Vlad BATRÎNCEA"><data key="label">Vlad BATRÎNCEA</data></node>
+    <edge id="e0" source="Artemie CĂTĂNOI" target="Veronica ROȘCA"><data key="weight">11</data></edge>
+    <edge id="e1" source="Dorian ISTRATII" target="Radu MARIAN"><data key="weight">6</data></edge>
+    <edge id="e2" source="Boris MARCOCI" target="Lilian CARP"><data key="weight">5</data></edge>
+    <edge id="e3" source="Eugeniu SINCHEVICI" target="Liliana NICOLAESCU-ONOFREI"><data key="weight">5</data></edge>
+    <edge id="e4" source="Andrian CHEPTONAR" target="Lilian CARP"><data key="weight">5</data></edge>
+    <edge id="e5" source="Adrian BELÎI" target="Veronica ROȘCA"><data key="weight">5</data></edge>
+    <edge id="e6" source="Alina DANDARA" target="Doina GHERMAN"><data key="weight">4</data></edge>
+    <edge id="e7" source="Angela MUNTEANU-POJOGA" target="Grigore NOVAC"><data key="weight">4</data></edge>
+    <edge id="e8" source="Larisa NOVAC" target="Liliana NICOLAESCU-ONOFREI"><data key="weight">3</data></edge>
+    <edge id="e9" source="Artemie CĂTĂNOI" target="Igor CHIRIAC"><data key="weight">3</data></edge>
+    <edge id="e10" source="Alexandr TRUBCA" target="Viorel BARDA"><data key="weight">3</data></edge>
+    <edge id="e11" source="Igor CHIRIAC" target="Veronica ROȘCA"><data key="weight">3</data></edge>
+    <edge id="e12" source="Boris MARCOCI" target="Boris POPA"><data key="weight">3</data></edge>
+    <edge id="e13" source="Ina COȘERU" target="Mariana CUȘNIR"><data key="weight">3</data></edge>
+    <edge id="e14" source="Radu MARIAN" target="Sergiu LAZARENCU"><data key="weight">3</data></edge>
+    <edge id="e15" source="Marina MOROZOVA" target="Radu MARIAN"><data key="weight">3</data></edge>
+    <edge id="e16" source="Adrian BELÎI" target="Doina GHERMAN"><data key="weight">2</data></edge>
+    <edge id="e17" source="Ana OGLINDA" target="Artemie CĂTĂNOI"><data key="weight">2</data></edge>
+    <edge id="e18" source="Alina DANDARA" target="Eugeniu SINCHEVICI"><data key="weight">2</data></edge>
+    <edge id="e19" source="Andrian CHEPTONAR" target="Veronica ROȘCA"><data key="weight">2</data></edge>
+    <edge id="e20" source="Ana OGLINDA" target="Vasile GRĂDINARU"><data key="weight">2</data></edge>
+    <edge id="e21" source="Radu MARIAN" target="Victor SPÎNU"><data key="weight">2</data></edge>
+    <edge id="e22" source="Boris MARCOCI" target="Vasile GRĂDINARU"><data key="weight">2</data></edge>
+    <edge id="e23" source="Alina DANDARA" target="Veronica ROȘCA"><data key="weight">2</data></edge>
+    <edge id="e24" source="Doina GHERMAN" target="Marina MOROZOVA"><data key="weight">2</data></edge>
+    <edge id="e25" source="Alexandr TRUBCA" target="Vasile GRĂDINARU"><data key="weight">2</data></edge>
+    <edge id="e26" source="Adrian BELÎI" target="Igor GROSU"><data key="weight">2</data></edge>
+    <edge id="e27" source="Artemie CĂTĂNOI" target="Boris POPA"><data key="weight">2</data></edge>
+    <edge id="e28" source="Liliana NICOLAESCU-ONOFREI" target="Marcela ADAM"><data key="weight">2</data></edge>
+    <edge id="e29" source="Artemie CĂTĂNOI" target="Larisa VOLOH"><data key="weight">2</data></edge>
+    <edge id="e30" source="Adrian BELÎI" target="Ana OGLINDA"><data key="weight">2</data></edge>
+    <edge id="e31" source="Ana CALINICI" target="Veronica ROȘCA"><data key="weight">2</data></edge>
+    <edge id="e32" source="Gheorghe ICHIM" target="Oleg CANAȚUI"><data key="weight">2</data></edge>
+    <edge id="e33" source="Doina GHERMAN" target="Ion GROZA"><data key="weight">2</data></edge>
+    <edge id="e34" source="Adrian BELÎI" target="Oazu NANTOI"><data key="weight">1</data></edge>
+    <edge id="e35" source="Andrian CHEPTONAR" target="Marina MOROZOVA"><data key="weight">1</data></edge>
+    <edge id="e36" source="Ana SPEIANU" target="Andrian CHEPTONAR"><data key="weight">1</data></edge>
+    <edge id="e37" source="Ana SPEIANU" target="Liliana NICOLAESCU-ONOFREI"><data key="weight">1</data></edge>
+    <edge id="e38" source="Efimia BANDALAC" target="Liliana NICOLAESCU-ONOFREI"><data key="weight">1</data></edge>
+    <edge id="e39" source="Ana OGLINDA" target="Ana SPEIANU"><data key="weight">1</data></edge>
+    <edge id="e40" source="Ana SPEIANU" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e41" source="Andrian CHEPTONAR" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e42" source="Adrian BELÎI" target="Vasile GRĂDINARU"><data key="weight">1</data></edge>
+    <edge id="e43" source="Marcela ADAM" target="Marina MOROZOVA"><data key="weight">1</data></edge>
+    <edge id="e44" source="Alexandr TRUBCA" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e45" source="Ana OGLINDA" target="Doina GHERMAN"><data key="weight">1</data></edge>
+    <edge id="e46" source="Ion POIA" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e47" source="Adrian BELÎI" target="Marina MOROZOVA"><data key="weight">1</data></edge>
+    <edge id="e48" source="Liliana GROSU" target="Marina MOROZOVA"><data key="weight">1</data></edge>
+    <edge id="e49" source="Adela RĂILEANU" target="Vlad BATRÎNCEA"><data key="weight">1</data></edge>
+    <edge id="e50" source="Andrian CHEPTONAR" target="Igor CHIRIAC"><data key="weight">1</data></edge>
+    <edge id="e51" source="Alexandr TRUBCA" target="Dorian ISTRATII"><data key="weight">1</data></edge>
+    <edge id="e52" source="Adrian BELÎI" target="Maria PANCU"><data key="weight">1</data></edge>
+    <edge id="e53" source="Ion BABICI" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e54" source="Ersilia QATRAWI" target="Virgiliu PÂSLARIUC"><data key="weight">1</data></edge>
+    <edge id="e55" source="Alexandr TRUBCA" target="Boris MARCOCI"><data key="weight">1</data></edge>
+    <edge id="e56" source="Andrian CHEPTONAR" target="Ion POIA"><data key="weight">1</data></edge>
+    <edge id="e57" source="Igor CHIRIAC" target="Ion GROZA"><data key="weight">1</data></edge>
+    <edge id="e58" source="Corneliu FURCULIȚĂ" target="Radu MUDREAC"><data key="weight">1</data></edge>
+    <edge id="e59" source="Marcela NISTOR" target="Vitali GAVROUC"><data key="weight">1</data></edge>
+    <edge id="e60" source="Alexandr TRUBCA" target="Ana OGLINDA"><data key="weight">1</data></edge>
+    <edge id="e61" source="Boris MARCOCI" target="Mariana CUȘNIR"><data key="weight">1</data></edge>
+    <edge id="e62" source="Alexandr TRUBCA" target="Doina GHERMAN"><data key="weight">1</data></edge>
+    <edge id="e63" source="Igor CHIRIAC" target="Olesea STAMATE"><data key="weight">1</data></edge>
+    <edge id="e64" source="Diana CARAMAN" target="Inga SIBOVA"><data key="weight">1</data></edge>
+    <edge id="e65" source="Alina DANDARA" target="Ina COȘERU"><data key="weight">1</data></edge>
+    <edge id="e66" source="Artemie CĂTĂNOI" target="Vasile GRĂDINARU"><data key="weight">1</data></edge>
+    <edge id="e67" source="Angela MUNTEANU-POJOGA" target="Artemie CĂTĂNOI"><data key="weight">1</data></edge>
+    <edge id="e68" source="Artemie CĂTĂNOI" target="Lilian CARP"><data key="weight">1</data></edge>
+    <edge id="e69" source="Alexandr TRUBCA" target="Mariana CUȘNIR"><data key="weight">1</data></edge>
+    <edge id="e70" source="Alexandr TRUBCA" target="Igor GROSU"><data key="weight">1</data></edge>
+    <edge id="e71" source="Adrian BELÎI" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e72" source="Adrian BELÎI" target="Mariana LUCREȚEANU"><data key="weight">1</data></edge>
+    <edge id="e73" source="Artemie CĂTĂNOI" target="Ersilia QATRAWI"><data key="weight">1</data></edge>
+    <edge id="e74" source="Corneliu FURCULIȚĂ" target="Petru BURDUJA"><data key="weight">1</data></edge>
+    <edge id="e75" source="Boris MARCOCI" target="Igor GROSU"><data key="weight">1</data></edge>
+    <edge id="e76" source="Alla DAROVANNAIA" target="Vlad BATRÎNCEA"><data key="weight">1</data></edge>
+    <edge id="e77" source="Lilian CARP" target="Veronica ROȘCA"><data key="weight">1</data></edge>
+    <edge id="e78" source="Ana OGLINDA" target="Larisa VOLOH"><data key="weight">1</data></edge>
+    <edge id="e79" source="Lilian CARP" target="Vasile GRĂDINARU"><data key="weight">1</data></edge>
+    <edge id="e80" source="Natalia DAVIDOVICI" target="Olesea STAMATE"><data key="weight">1</data></edge>
+    <edge id="e81" source="Boris POPA" target="Veronica ROȘCA"><data key="weight">1</data></edge>
+    <edge id="e82" source="Adrian BELÎI" target="Natalia DAVIDOVICI"><data key="weight">1</data></edge>
+    <edge id="e83" source="Angela MUNTEANU-POJOGA" target="Igor CHIRIAC"><data key="weight">1</data></edge>
+    <edge id="e84" source="Ina COȘERU" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e85" source="Boris MARCOCI" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e86" source="Alexandr TRUBCA" target="Marina MOROZOVA"><data key="weight">1</data></edge>
+    <edge id="e87" source="Ina COȘERU" target="Larisa VOLOH"><data key="weight">1</data></edge>
+    <edge id="e88" source="Alina DANDARA" target="Olesea STAMATE"><data key="weight">1</data></edge>
+    <edge id="e89" source="Ersilia QATRAWI" target="Sergiu LAZARENCU"><data key="weight">1</data></edge>
+    <edge id="e90" source="Igor GROSU" target="Veronica ROȘCA"><data key="weight">1</data></edge>
+    <edge id="e91" source="Alina DANDARA" target="Victor SPÎNU"><data key="weight">1</data></edge>
+    <edge id="e92" source="Larisa VOLOH" target="Maria GONȚA"><data key="weight">1</data></edge>
+    <edge id="e93" source="Andrian CHEPTONAR" target="Ion ȘPAC"><data key="weight">1</data></edge>
+    <edge id="e94" source="Angela MUNTEANU-POJOGA" target="Evghenia COJOCARI"><data key="weight">1</data></edge>
+    <edge id="e95" source="Dorian ISTRATII" target="Eugeniu SINCHEVICI"><data key="weight">1</data></edge>
+    <edge id="e96" source="Alexandr TRUBCA" target="Larisa VOLOH"><data key="weight">1</data></edge>
+    <edge id="e97" source="Olesea STAMATE" target="Radu MARIAN"><data key="weight">1</data></edge>
+    <edge id="e98" source="Alla PILIPEȚCAIA" target="Petru BURDUJA"><data key="weight">1</data></edge>
+    <edge id="e99" source="Andrian CHEPTONAR" target="Oazu NANTOI"><data key="weight">1</data></edge>
+    <edge id="e100" source="Ana CALINICI" target="Igor GROSU"><data key="weight">1</data></edge>
+    <edge id="e101" source="Larisa NOVAC" target="Sergiu LAZARENCU"><data key="weight">1</data></edge>
+    <edge id="e102" source="Ana OGLINDA" target="Liliana NICOLAESCU-ONOFREI"><data key="weight">1</data></edge>
+    <edge id="e103" source="Ana OGLINDA" target="Ion GROZA"><data key="weight">1</data></edge>
+    <edge id="e104" source="Ana RACU" target="Artemie CĂTĂNOI"><data key="weight">1</data></edge>
+    <edge id="e105" source="Marcela NISTOR" target="Oazu NANTOI"><data key="weight">1</data></edge>
+    <edge id="e106" source="Angela MUNTEANU-POJOGA" target="Liliana NICOLAESCU-ONOFREI"><data key="weight">1</data></edge>
+    <edge id="e107" source="Lilian CARP" target="Natalia DAVIDOVICI"><data key="weight">1</data></edge>
+    <edge id="e108" source="Ana RACU" target="Liliana GROSU"><data key="weight">1</data></edge>
+    <edge id="e109" source="Igor CHIRIAC" target="Lilian CARP"><data key="weight">1</data></edge>
+    <edge id="e110" source="Dorian ISTRATII" target="Efimia BANDALAC"><data key="weight">1</data></edge>
+    <edge id="e111" source="Alexandr TRUBCA" target="Oazu NANTOI"><data key="weight">1</data></edge>
+    <edge id="e112" source="Petru BURDUJA" target="Radu MUDREAC"><data key="weight">1</data></edge>
+    <edge id="e113" source="Alexandr TRUBCA" target="Sergiu LAZARENCU"><data key="weight">1</data></edge>
+    <edge id="e114" source="Efimia BANDALAC" target="Larisa VOLOH"><data key="weight">1</data></edge>
+  </graph>
+</graphml>

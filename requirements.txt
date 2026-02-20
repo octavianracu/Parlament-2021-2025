@@ -1,0 +1,21 @@
+# Web scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Selenium pentru pagini JavaScript
+selenium>=4.15.0
+webdriver-manager>=4.0.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Network analysis
+networkx>=3.1
+
+# Visualization
+matplotlib>=3.7.0
+
+# Optional: For progress bars
+tqdm>=4.66.0

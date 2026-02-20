@@ -1,0 +1,37 @@
+{
+  "numar_proiecte": 1,
+  "numar_deputati": 7,
+  "numar_colaborari": 21,
+  "densitate": 1.0,
+  "clustering": 1.0,
+  "top_10_deputati": [
+    {
+      "nume": "Grigore NOVAC",
+      "centralitate": 1.0
+    },
+    {
+      "nume": "Igor DODON",
+      "centralitate": 1.0
+    },
+    {
+      "nume": "Marcel CENUȘA",
+      "centralitate": 1.0
+    },
+    {
+      "nume": "Pavel VOICU",
+      "centralitate": 1.0
+    },
+    {
+      "nume": "Vlad BATRÎNCEA",
+      "centralitate": 1.0
+    },
+    {
+      "nume": "Vladimir ODNOSTALCO",
+      "centralitate": 1.0
+    },
+    {
+      "nume": "Zinaida GRECEANÎI",
+      "centralitate": 1.0
+    }
+  ]
+}
